@@ -1,0 +1,10 @@
+
+//***********************************************************
+const char* ssid = "muenchen.freifunk.net";
+const char* password = "";
+const char *mqtt_broker =  "mqtt.example.com";
+const char *mqtt_user =  "user01";
+const char *mqtt_pass =  "abcd1234";
+
+#define MQTT_TOPIC_BASE "mumalab/test/lcd"
+//***********************************************************

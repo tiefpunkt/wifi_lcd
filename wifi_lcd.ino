@@ -27,6 +27,89 @@ struct page {
 
 int current_page = -1;
 
+byte page_chars[8][8] = {
+  {
+    0b00001,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000
+  },
+  {
+    0b00000,
+    0b00001,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000
+  },
+    {
+    0b00000,
+    0b00000,
+    0b00001,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000
+  },
+  {
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00001,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000
+  },
+  {
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00001,
+    0b00000,
+    0b00000,
+    0b00000
+  },
+  {
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00001,
+    0b00000,
+    0b00000
+  },
+  {
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00001,
+    0b00000
+  },
+  {
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00000,
+    0b00001
+  }
+};
+
 void writeToLCD(char* text) {
   lcd.clear();
   lcd.setCursor(0,0);
@@ -191,8 +274,9 @@ void loop() {
         Serial.print("Showing page ");
         Serial.println(current_page);
         writeToLCD(pages[current_page].text);
+        lcd.createChar(0, page_chars[current_page]);
         lcd.setCursor(15,1);
-        lcd.print(current_page+1);
+        lcd.write(byte(0));
       }
     }
   }
